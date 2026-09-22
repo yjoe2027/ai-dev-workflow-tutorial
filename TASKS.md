@@ -12,14 +12,6 @@ A milestone is done when:
 
 ## To Do
 
-### TASK-1: Environment setup and project initialization
-Set up a Python virtual environment, dependencies, and a minimal Streamlit app skeleton.
-- [ ] `requirements.txt` lists streamlit, pandas, plotly, and pytest, and installs cleanly into `venv/`
-- [ ] `venv/` is ignored by git
-- [ ] `streamlit run app.py` starts and shows the dashboard title
-
-Commit:
-
 ### TASK-2: Data loading and basic structure
 Load `data/sales-data.csv` into a pandas DataFrame through a dedicated data module.
 - [ ] A data module loads the CSV with `date` parsed as dates and numeric columns as numbers
@@ -68,5 +60,13 @@ Deploy the dashboard from `main` to Streamlit Community Cloud with a public URL.
 Commit:
 
 ## In Progress
+
+### TASK-1: Environment setup and project initialization
+Set up a Python virtual environment, dependencies, and a minimal Streamlit app skeleton.
+- [ ] `requirements.txt` lists streamlit, pandas, plotly, and pytest, and installs cleanly into `venv/`
+- [ ] `venv/` is ignored by git
+- [ ] `streamlit run app.py` starts and shows the dashboard title
+
+Commit:
 
 ## Done
