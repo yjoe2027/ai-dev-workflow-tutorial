@@ -12,14 +12,6 @@ A milestone is done when:
 
 ## To Do
 
-### TASK-2: Data loading and basic structure
-Load `data/sales-data.csv` into a pandas DataFrame through a dedicated data module.
-- [ ] A data module loads the CSV with `date` parsed as dates and numeric columns as numbers
-- [ ] Loading validates that all required columns are present
-- [ ] pytest tests cover loading and validation
-
-Commit:
-
 ### TASK-3: KPI cards implementation
 Show Total Sales and Total Orders at the top of the dashboard.
 - [ ] Total Sales is displayed as currency (`$116,500`-style formatting)
@@ -60,6 +52,14 @@ Deploy the dashboard from `main` to Streamlit Community Cloud with a public URL.
 Commit:
 
 ## In Progress
+
+### TASK-2: Data loading and basic structure
+Load `data/sales-data.csv` into a pandas DataFrame through a dedicated data module.
+- [ ] A data module loads the CSV with `date` parsed as dates and numeric columns as numbers
+- [ ] Loading validates that all required columns are present
+- [ ] pytest tests cover loading and validation
+
+Commit:
 
 ## Done
 
