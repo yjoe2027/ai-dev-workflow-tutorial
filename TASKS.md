@@ -61,12 +61,13 @@ Commit:
 
 ## In Progress
 
+## Done
+
 ### TASK-1: Environment setup and project initialization
 Set up a Python virtual environment, dependencies, and a minimal Streamlit app skeleton.
-- [ ] `requirements.txt` lists streamlit, pandas, plotly, and pytest, and installs cleanly into `venv/`
-- [ ] `venv/` is ignored by git
-- [ ] `streamlit run app.py` starts and shows the dashboard title
+- [x] `requirements.txt` lists streamlit, pandas, plotly, and pytest, and installs cleanly into `venv/`
+- [x] `venv/` is ignored by git
+- [x] `streamlit run app.py` starts and shows the dashboard title
 
-Commit:
-
-## Done
+Commit: e1497a9
+Notes: clean
