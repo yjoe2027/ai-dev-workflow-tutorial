@@ -83,7 +83,8 @@ app.py          (Streamlit + Plotly Express, no calculations)
 - `tests/test_sales_data.py` with pytest. Written test-first (TDD) for every function in `sales_data.py`.
 - Unit tests use a small hand-built DataFrame (a few rows across 2 months, 2 categories, 2 regions) so expected values are obvious.
 - One integration test loads the real CSV and checks: 482 orders, total sales ≈ 116,500.21, top category Electronics, regions {North, South, East, West}.
-- `app.py` is verified by starting `streamlit run app.py` headless and confirming it serves without errors (then stopping it). No UI unit tests.
+- `tests/test_app.py` runs `app.py` once with Streamlit's built-in `AppTest` and checks there is no exception and the two KPI cards read `$116,500` and `482`. This is a smoke test of the real page, not a test of layout details. (Added while writing the plan: it lets pytest check the numbers the app actually displays.)
+- Each milestone also starts `streamlit run app.py` headless, confirms the server answers its health check, and stops it.
 
 ## Files
 
@@ -91,7 +92,9 @@ app.py          (Streamlit + Plotly Express, no calculations)
 |------|---------|
 | `app.py` | Streamlit UI |
 | `sales_data.py` | Loading, validation, aggregations, formatting |
-| `tests/test_sales_data.py` | pytest tests |
+| `tests/test_sales_data.py` | pytest tests for `sales_data.py` |
+| `tests/test_app.py` | `AppTest` smoke test of `app.py` |
+| `pytest.ini` | lets tests import modules from the project root |
 | `requirements.txt` | streamlit, pandas, plotly, pytest |
 | `.gitignore` | already ignores `venv/`; verified per milestone |
 | `README.md` | gains a short "Run the dashboard locally" section |
