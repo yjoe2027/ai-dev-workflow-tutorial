@@ -26,3 +26,8 @@ try:
 except (FileNotFoundError, ValueError) as error:
     st.error(f"Could not load the sales data: {error}")
     st.stop()
+
+# KPI cards
+sales_col, orders_col = st.columns(2)
+sales_col.metric("Total Sales", sales_data.format_currency(sales_data.total_sales(df)))
+orders_col.metric("Total Orders", sales_data.format_count(sales_data.total_orders(df)))

@@ -20,3 +20,8 @@ def test_app_runs_without_errors(app):
 
 def test_app_shows_title(app):
     assert app.title[0].value == "ShopSmart Sales Dashboard"
+
+
+def test_app_shows_kpis_from_prd_expected_output(app):
+    kpis = {metric.label: metric.value for metric in app.metric}
+    assert kpis == {"Total Sales": "$116,500", "Total Orders": "482"}
