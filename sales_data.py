@@ -45,3 +45,13 @@ def total_sales(df):
 def total_orders(df):
     """Number of distinct orders."""
     return int(df["order_id"].nunique())
+
+
+def format_currency(value):
+    """Format a dollar amount with no cents, e.g. 116500.21 -> '$116,500'."""
+    return f"${value:,.0f}"
+
+
+def format_count(value):
+    """Format a whole number with thousands separators, e.g. 1234 -> '1,234'."""
+    return f"{value:,}"

@@ -81,3 +81,14 @@ def test_total_orders_counts_orders(sample_df):
 def test_total_orders_counts_each_order_id_once(sample_df):
     repeated = pd.concat([sample_df, sample_df.iloc[[0]]])
     assert sales_data.total_orders(repeated) == 4
+
+
+def test_format_currency_uses_dollar_sign_and_separators():
+    assert sales_data.format_currency(116500.21) == "$116,500"
+    assert sales_data.format_currency(1234567) == "$1,234,567"
+    assert sales_data.format_currency(0) == "$0"
+
+
+def test_format_count_uses_separators():
+    assert sales_data.format_count(482) == "482"
+    assert sales_data.format_count(1234567) == "1,234,567"
