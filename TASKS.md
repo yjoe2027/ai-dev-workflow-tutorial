@@ -29,14 +29,6 @@ Commit:
 
 ## In Progress
 
-### TASK-5: Category and region breakdowns
-Add bar charts of sales by product category and by region, side by side.
-- [ ] Category chart shows all 5 categories sorted highest to lowest (Electronics first)
-- [ ] Region chart shows all 4 regions sorted highest to lowest
-- [ ] Category and region aggregations are covered by pytest tests
-
-Commit:
-
 ## Done
 
 ### TASK-1: Environment setup and project initialization
@@ -73,4 +65,13 @@ Add an interactive line chart of sales over time.
 - [x] Monthly aggregation is covered by pytest tests
 
 Commit: 9bddb97
+Notes: clean
+
+### TASK-5: Category and region breakdowns
+Add bar charts of sales by product category and by region, side by side.
+- [x] Category chart shows all 5 categories sorted highest to lowest (Electronics first)
+- [x] Region chart shows all 4 regions sorted highest to lowest
+- [x] Category and region aggregations are covered by pytest tests
+
+Commit: 6ce2ab7
 Notes: clean
