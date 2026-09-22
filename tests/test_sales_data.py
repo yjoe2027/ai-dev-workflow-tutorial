@@ -100,3 +100,19 @@ def test_monthly_sales_totals_each_month_oldest_first(sample_df):
     assert list(result.columns) == ["month", "total_amount"]
     assert list(result["month"]) == [pd.Timestamp("2024-01-01"), pd.Timestamp("2024-02-01")]
     assert list(result["total_amount"]) == pytest.approx([120.0, 150.0])
+
+
+def test_sales_by_category_sorted_highest_first(sample_df):
+    result = sales_data.sales_by_category(sample_df)
+
+    assert list(result.columns) == ["category", "total_amount"]
+    assert list(result["category"]) == ["Electronics", "Wearables", "Accessories"]
+    assert list(result["total_amount"]) == pytest.approx([200.0, 50.0, 20.0])
+
+
+def test_sales_by_region_sorted_highest_first(sample_df):
+    result = sales_data.sales_by_region(sample_df)
+
+    assert list(result.columns) == ["region", "total_amount"]
+    assert list(result["region"]) == ["North", "East", "South"]
+    assert list(result["total_amount"]) == pytest.approx([150.0, 100.0, 20.0])

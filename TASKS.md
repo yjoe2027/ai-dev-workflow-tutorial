@@ -12,14 +12,6 @@ A milestone is done when:
 
 ## To Do
 
-### TASK-5: Category and region breakdowns
-Add bar charts of sales by product category and by region, side by side.
-- [ ] Category chart shows all 5 categories sorted highest to lowest (Electronics first)
-- [ ] Region chart shows all 4 regions sorted highest to lowest
-- [ ] Category and region aggregations are covered by pytest tests
-
-Commit:
-
 ### TASK-6: Testing and refinement
 Verify the dashboard against the PRD acceptance criteria and polish its appearance.
 - [ ] All pytest tests pass and dashboard numbers match the PRD's Expected Output
@@ -36,6 +28,14 @@ Deploy the dashboard from `main` to Streamlit Community Cloud with a public URL.
 Commit:
 
 ## In Progress
+
+### TASK-5: Category and region breakdowns
+Add bar charts of sales by product category and by region, side by side.
+- [ ] Category chart shows all 5 categories sorted highest to lowest (Electronics first)
+- [ ] Region chart shows all 4 regions sorted highest to lowest
+- [ ] Category and region aggregations are covered by pytest tests
+
+Commit:
 
 ## Done
 

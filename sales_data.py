@@ -56,6 +56,26 @@ def monthly_sales(df):
     return df.groupby(month)["total_amount"].sum().reset_index()
 
 
+def _sales_by(df, column):
+    """Total sales per value of `column`, highest first."""
+    return (
+        df.groupby(column, as_index=False)["total_amount"]
+        .sum()
+        .sort_values("total_amount", ascending=False)
+        .reset_index(drop=True)
+    )
+
+
+def sales_by_category(df):
+    """Total sales per product category, highest first."""
+    return _sales_by(df, "category")
+
+
+def sales_by_region(df):
+    """Total sales per region, highest first."""
+    return _sales_by(df, "region")
+
+
 def format_currency(value):
     """Format a dollar amount with no cents, e.g. 116500.21 -> '$116,500'."""
     return f"${value:,.0f}"
