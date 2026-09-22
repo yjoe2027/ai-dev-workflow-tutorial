@@ -37,14 +37,6 @@ Commit:
 
 ## In Progress
 
-### TASK-4: Sales trend chart
-Add an interactive line chart of sales over time.
-- [ ] Line chart shows monthly sales with dates on the x-axis and sales on the y-axis
-- [ ] Hover tooltips show exact values
-- [ ] Monthly aggregation is covered by pytest tests
-
-Commit:
-
 ## Done
 
 ### TASK-1: Environment setup and project initialization
@@ -72,4 +64,13 @@ Show Total Sales and Total Orders at the top of the dashboard.
 - [x] KPI calculations are covered by pytest tests
 
 Commit: cc988b0
+Notes: clean
+
+### TASK-4: Sales trend chart
+Add an interactive line chart of sales over time.
+- [x] Line chart shows monthly sales with dates on the x-axis and sales on the y-axis
+- [x] Hover tooltips show exact values
+- [x] Monthly aggregation is covered by pytest tests
+
+Commit: 9bddb97
 Notes: clean
