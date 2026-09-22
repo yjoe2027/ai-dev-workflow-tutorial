@@ -12,14 +12,6 @@ A milestone is done when:
 
 ## To Do
 
-### TASK-4: Sales trend chart
-Add an interactive line chart of sales over time.
-- [ ] Line chart shows monthly sales with dates on the x-axis and sales on the y-axis
-- [ ] Hover tooltips show exact values
-- [ ] Monthly aggregation is covered by pytest tests
-
-Commit:
-
 ### TASK-5: Category and region breakdowns
 Add bar charts of sales by product category and by region, side by side.
 - [ ] Category chart shows all 5 categories sorted highest to lowest (Electronics first)
@@ -44,6 +36,14 @@ Deploy the dashboard from `main` to Streamlit Community Cloud with a public URL.
 Commit:
 
 ## In Progress
+
+### TASK-4: Sales trend chart
+Add an interactive line chart of sales over time.
+- [ ] Line chart shows monthly sales with dates on the x-axis and sales on the y-axis
+- [ ] Hover tooltips show exact values
+- [ ] Monthly aggregation is covered by pytest tests
+
+Commit:
 
 ## Done
 

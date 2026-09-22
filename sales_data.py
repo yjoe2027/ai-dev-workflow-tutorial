@@ -47,6 +47,15 @@ def total_orders(df):
     return int(df["order_id"].nunique())
 
 
+def monthly_sales(df):
+    """Total sales per calendar month, oldest first.
+
+    The `month` column holds the first day of each month.
+    """
+    month = df["date"].dt.to_period("M").dt.to_timestamp().rename("month")
+    return df.groupby(month)["total_amount"].sum().reset_index()
+
+
 def format_currency(value):
     """Format a dollar amount with no cents, e.g. 116500.21 -> '$116,500'."""
     return f"${value:,.0f}"

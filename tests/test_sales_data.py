@@ -92,3 +92,11 @@ def test_format_currency_uses_dollar_sign_and_separators():
 def test_format_count_uses_separators():
     assert sales_data.format_count(482) == "482"
     assert sales_data.format_count(1234567) == "1,234,567"
+
+
+def test_monthly_sales_totals_each_month_oldest_first(sample_df):
+    result = sales_data.monthly_sales(sample_df)
+
+    assert list(result.columns) == ["month", "total_amount"]
+    assert list(result["month"]) == [pd.Timestamp("2024-01-01"), pd.Timestamp("2024-02-01")]
+    assert list(result["total_amount"]) == pytest.approx([120.0, 150.0])
