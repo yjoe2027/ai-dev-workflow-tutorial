@@ -12,14 +12,6 @@ A milestone is done when:
 
 ## To Do
 
-### TASK-6: Testing and refinement
-Verify the dashboard against the PRD acceptance criteria and polish its appearance.
-- [ ] All pytest tests pass and dashboard numbers match the PRD's Expected Output
-- [ ] Dashboard runs with no errors or warnings, with clear labels on every chart and metric
-- [ ] README section explains how to set up and run the dashboard locally
-
-Commit:
-
 ### TASK-7: Deployment to Streamlit Community Cloud
 Deploy the dashboard from `main` to Streamlit Community Cloud with a public URL.
 - [ ] App is deployed from `main` and loads without errors
@@ -28,6 +20,14 @@ Deploy the dashboard from `main` to Streamlit Community Cloud with a public URL.
 Commit:
 
 ## In Progress
+
+### TASK-6: Testing and refinement
+Verify the dashboard against the PRD acceptance criteria and polish its appearance.
+- [ ] All pytest tests pass and dashboard numbers match the PRD's Expected Output
+- [ ] Dashboard runs with no errors or warnings, with clear labels on every chart and metric
+- [ ] README section explains how to set up and run the dashboard locally
+
+Commit:
 
 ## Done
 

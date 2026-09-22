@@ -1,5 +1,7 @@
 """Tests for sales_data.py."""
 
+from pathlib import Path
+
 import pandas as pd
 import pytest
 
@@ -116,3 +118,15 @@ def test_sales_by_region_sorted_highest_first(sample_df):
     assert list(result.columns) == ["region", "total_amount"]
     assert list(result["region"]) == ["North", "East", "South"]
     assert list(result["total_amount"]) == pytest.approx([150.0, 100.0, 20.0])
+
+
+def test_real_csv_matches_prd_expected_output():
+    path = Path(__file__).parent.parent / "data" / "sales-data.csv"
+    df = sales_data.load_sales_data(path)
+
+    assert sales_data.total_orders(df) == 482
+    assert sales_data.total_sales(df) == pytest.approx(116500.21, abs=0.01)
+    assert sales_data.sales_by_category(df)["category"].iloc[0] == "Electronics"
+    assert len(sales_data.sales_by_category(df)) == 5
+    assert set(sales_data.sales_by_region(df)["region"]) == {"North", "South", "East", "West"}
+    assert len(sales_data.monthly_sales(df)) == 12
