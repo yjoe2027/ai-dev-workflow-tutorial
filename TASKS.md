@@ -12,14 +12,6 @@ A milestone is done when:
 
 ## To Do
 
-### TASK-3: KPI cards implementation
-Show Total Sales and Total Orders at the top of the dashboard.
-- [ ] Total Sales is displayed as currency (`$116,500`-style formatting)
-- [ ] Total Orders is displayed with thousands separators (482 for the sample data)
-- [ ] KPI calculations are covered by pytest tests
-
-Commit:
-
 ### TASK-4: Sales trend chart
 Add an interactive line chart of sales over time.
 - [ ] Line chart shows monthly sales with dates on the x-axis and sales on the y-axis
@@ -52,6 +44,14 @@ Deploy the dashboard from `main` to Streamlit Community Cloud with a public URL.
 Commit:
 
 ## In Progress
+
+### TASK-3: KPI cards implementation
+Show Total Sales and Total Orders at the top of the dashboard.
+- [ ] Total Sales is displayed as currency (`$116,500`-style formatting)
+- [ ] Total Orders is displayed with thousands separators (482 for the sample data)
+- [ ] KPI calculations are covered by pytest tests
+
+Commit:
 
 ## Done
 

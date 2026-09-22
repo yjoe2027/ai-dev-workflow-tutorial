@@ -46,3 +46,38 @@ def test_load_rejects_non_numeric_amounts(tmp_path):
 
     with pytest.raises(ValueError, match="non-numeric values in: total_amount"):
         sales_data.load_sales_data(path)
+
+
+@pytest.fixture
+def sample_df():
+    """Four orders over two months, three categories, three regions.
+
+    Jan: 100 + 20 = 120    Feb: 50 + 100 = 150    Total: 270
+    Electronics 200, Wearables 50, Accessories 20
+    North 150, East 100, South 20
+    """
+    return pd.DataFrame(
+        {
+            "date": pd.to_datetime(["2024-01-05", "2024-01-20", "2024-02-03", "2024-02-10"]),
+            "order_id": ["ORD-1", "ORD-2", "ORD-3", "ORD-4"],
+            "product": ["Laptop", "Phone Case", "Smart Watch", "Laptop"],
+            "category": ["Electronics", "Accessories", "Wearables", "Electronics"],
+            "region": ["North", "South", "North", "East"],
+            "quantity": [1, 2, 1, 1],
+            "unit_price": [100.0, 10.0, 50.0, 100.0],
+            "total_amount": [100.0, 20.0, 50.0, 100.0],
+        }
+    )
+
+
+def test_total_sales_sums_all_revenue(sample_df):
+    assert sales_data.total_sales(sample_df) == pytest.approx(270.0)
+
+
+def test_total_orders_counts_orders(sample_df):
+    assert sales_data.total_orders(sample_df) == 4
+
+
+def test_total_orders_counts_each_order_id_once(sample_df):
+    repeated = pd.concat([sample_df, sample_df.iloc[[0]]])
+    assert sales_data.total_orders(repeated) == 4
