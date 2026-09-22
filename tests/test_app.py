@@ -25,3 +25,7 @@ def test_app_shows_title(app):
 def test_app_shows_kpis_from_prd_expected_output(app):
     kpis = {metric.label: metric.value for metric in app.metric}
     assert kpis == {"Total Sales": "$116,500", "Total Orders": "482"}
+
+
+def test_app_shows_charts(app):
+    assert len(app.get("plotly_chart")) >= 1
