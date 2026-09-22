@@ -53,14 +53,6 @@ Commit:
 
 ## In Progress
 
-### TASK-2: Data loading and basic structure
-Load `data/sales-data.csv` into a pandas DataFrame through a dedicated data module.
-- [ ] A data module loads the CSV with `date` parsed as dates and numeric columns as numbers
-- [ ] Loading validates that all required columns are present
-- [ ] pytest tests cover loading and validation
-
-Commit:
-
 ## Done
 
 ### TASK-1: Environment setup and project initialization
@@ -70,4 +62,13 @@ Set up a Python virtual environment, dependencies, and a minimal Streamlit app s
 - [x] `streamlit run app.py` starts and shows the dashboard title
 
 Commit: e1497a9
+Notes: clean
+
+### TASK-2: Data loading and basic structure
+Load `data/sales-data.csv` into a pandas DataFrame through a dedicated data module.
+- [x] A data module loads the CSV with `date` parsed as dates and numeric columns as numbers
+- [x] Loading validates that all required columns are present
+- [x] pytest tests cover loading and validation
+
+Commit: 01c1971
 Notes: clean
