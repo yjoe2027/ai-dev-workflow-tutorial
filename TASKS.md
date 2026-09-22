@@ -45,14 +45,6 @@ Commit:
 
 ## In Progress
 
-### TASK-3: KPI cards implementation
-Show Total Sales and Total Orders at the top of the dashboard.
-- [ ] Total Sales is displayed as currency (`$116,500`-style formatting)
-- [ ] Total Orders is displayed with thousands separators (482 for the sample data)
-- [ ] KPI calculations are covered by pytest tests
-
-Commit:
-
 ## Done
 
 ### TASK-1: Environment setup and project initialization
@@ -71,4 +63,13 @@ Load `data/sales-data.csv` into a pandas DataFrame through a dedicated data modu
 - [x] pytest tests cover loading and validation
 
 Commit: 01c1971
+Notes: clean
+
+### TASK-3: KPI cards implementation
+Show Total Sales and Total Orders at the top of the dashboard.
+- [x] Total Sales is displayed as currency (`$116,500`-style formatting)
+- [x] Total Orders is displayed with thousands separators (482 for the sample data)
+- [x] KPI calculations are covered by pytest tests
+
+Commit: cc988b0
 Notes: clean
