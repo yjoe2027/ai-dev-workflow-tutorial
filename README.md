@@ -54,6 +54,18 @@ See the finished version: https://sales-dashboard-greg-lontok.streamlit.app/
 
 The dashboard itself is straightforward. The point is the workflow you use to build it.
 
+## Run the dashboard locally
+
+```bash
+python3 -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+streamlit run app.py            # opens http://localhost:8501
+pytest                          # run the tests
+```
+
+The dashboard reads `data/sales-data.csv`. Calculations live in `sales_data.py` (tested in `tests/`); `app.py` only lays out the page.
+
 ## The workflow
 
 Every technology company uses a variation of this workflow. You'll experience the entire cycle:
