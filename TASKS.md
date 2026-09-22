@@ -21,14 +21,6 @@ Commit:
 
 ## In Progress
 
-### TASK-6: Testing and refinement
-Verify the dashboard against the PRD acceptance criteria and polish its appearance.
-- [ ] All pytest tests pass and dashboard numbers match the PRD's Expected Output
-- [ ] Dashboard runs with no errors or warnings, with clear labels on every chart and metric
-- [ ] README section explains how to set up and run the dashboard locally
-
-Commit:
-
 ## Done
 
 ### TASK-1: Environment setup and project initialization
@@ -75,3 +67,12 @@ Add bar charts of sales by product category and by region, side by side.
 
 Commit: 6ce2ab7
 Notes: clean
+
+### TASK-6: Testing and refinement
+Verify the dashboard against the PRD acceptance criteria and polish its appearance.
+- [x] All pytest tests pass and dashboard numbers match the PRD's Expected Output
+- [x] Dashboard runs with no errors or warnings, with clear labels on every chart and metric
+- [x] README section explains how to set up and run the dashboard locally
+
+Commit: b2e3714
+Notes: final review suggested pinning the full category/region sort order in the real-data test; added in b2e3714. Also moved sales_bar_chart up with the other definitions after the TASK-5 review.
