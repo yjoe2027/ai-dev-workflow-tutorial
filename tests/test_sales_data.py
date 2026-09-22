@@ -126,7 +126,12 @@ def test_real_csv_matches_prd_expected_output():
 
     assert sales_data.total_orders(df) == 482
     assert sales_data.total_sales(df) == pytest.approx(116500.21, abs=0.01)
-    assert sales_data.sales_by_category(df)["category"].iloc[0] == "Electronics"
-    assert len(sales_data.sales_by_category(df)) == 5
-    assert set(sales_data.sales_by_region(df)["region"]) == {"North", "South", "East", "West"}
+    assert list(sales_data.sales_by_category(df)["category"]) == [
+        "Electronics",
+        "Wearables",
+        "Audio",
+        "Smart Home",
+        "Accessories",
+    ]
+    assert list(sales_data.sales_by_region(df)["region"]) == ["North", "West", "East", "South"]
     assert len(sales_data.monthly_sales(df)) == 12
