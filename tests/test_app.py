@@ -27,5 +27,5 @@ def test_app_shows_kpis_from_prd_expected_output(app):
     assert kpis == {"Total Sales": "$116,500", "Total Orders": "482"}
 
 
-def test_app_shows_charts(app):
-    assert len(app.get("plotly_chart")) >= 1
+def test_app_shows_trend_category_and_region_charts(app):
+    assert len(app.get("plotly_chart")) == 3
