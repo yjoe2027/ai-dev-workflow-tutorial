@@ -12,13 +12,6 @@ A milestone is done when:
 
 ## To Do
 
-### TASK-7: Deployment to Streamlit Community Cloud
-Deploy the dashboard from `main` to Streamlit Community Cloud with a public URL.
-- [ ] App is deployed from `main` and loads without errors
-- [ ] Public shareable URL is recorded in the README
-
-Commit:
-
 ## In Progress
 
 ## Done
@@ -76,3 +69,12 @@ Verify the dashboard against the PRD acceptance criteria and polish its appearan
 
 Commit: b2e3714
 Notes: final review suggested pinning the full category/region sort order in the real-data test; added in b2e3714. Also moved sales_bar_chart up with the other definitions after the TASK-5 review.
+
+### TASK-7: Deployment to Streamlit Community Cloud
+Deploy the dashboard from `main` to Streamlit Community Cloud with a public URL.
+- [x] App is deployed from `main` and loads without errors
+- [x] Public shareable URL is recorded in the README
+
+URL: https://sales-dashboard-yubin.streamlit.app
+Commit: ec3cecc (main at deploy)
+Notes: clean
