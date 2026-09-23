@@ -1,0 +1,137 @@
+"""Tests for sales_data.py."""
+
+from pathlib import Path
+
+import pandas as pd
+import pytest
+
+import sales_data
+
+HEADER = "date,order_id,product,category,region,quantity,unit_price,total_amount\n"
+
+
+def write_csv(tmp_path, text):
+    path = tmp_path / "sales.csv"
+    path.write_text(text)
+    return path
+
+
+def test_load_parses_dates_and_numbers(tmp_path):
+    path = write_csv(
+        tmp_path,
+        HEADER
+        + "2024-01-15,ORD-1,Laptop,Electronics,North,2,49.99,99.98\n"
+        + "2024-02-01,ORD-2,Phone Case,Accessories,South,1,10.00,10.00\n",
+    )
+
+    df = sales_data.load_sales_data(path)
+
+    assert len(df) == 2
+    assert pd.api.types.is_datetime64_any_dtype(df["date"])
+    assert df["date"].iloc[0] == pd.Timestamp("2024-01-15")
+    assert df["quantity"].iloc[0] == 2
+    assert df["total_amount"].iloc[0] == pytest.approx(99.98)
+
+
+def test_load_rejects_missing_columns(tmp_path):
+    path = write_csv(tmp_path, "date,order_id\n2024-01-15,ORD-1\n")
+
+    with pytest.raises(ValueError, match="missing columns: product"):
+        sales_data.load_sales_data(path)
+
+
+def test_load_rejects_non_numeric_amounts(tmp_path):
+    path = write_csv(
+        tmp_path,
+        HEADER + "2024-01-15,ORD-1,Laptop,Electronics,North,2,49.99,lots\n",
+    )
+
+    with pytest.raises(ValueError, match="non-numeric values in: total_amount"):
+        sales_data.load_sales_data(path)
+
+
+@pytest.fixture
+def sample_df():
+    """Four orders over two months, three categories, three regions.
+
+    Jan: 100 + 20 = 120    Feb: 50 + 100 = 150    Total: 270
+    Electronics 200, Wearables 50, Accessories 20
+    North 150, East 100, South 20
+    """
+    return pd.DataFrame(
+        {
+            "date": pd.to_datetime(["2024-01-05", "2024-01-20", "2024-02-03", "2024-02-10"]),
+            "order_id": ["ORD-1", "ORD-2", "ORD-3", "ORD-4"],
+            "product": ["Laptop", "Phone Case", "Smart Watch", "Laptop"],
+            "category": ["Electronics", "Accessories", "Wearables", "Electronics"],
+            "region": ["North", "South", "North", "East"],
+            "quantity": [1, 2, 1, 1],
+            "unit_price": [100.0, 10.0, 50.0, 100.0],
+            "total_amount": [100.0, 20.0, 50.0, 100.0],
+        }
+    )
+
+
+def test_total_sales_sums_all_revenue(sample_df):
+    assert sales_data.total_sales(sample_df) == pytest.approx(270.0)
+
+
+def test_total_orders_counts_orders(sample_df):
+    assert sales_data.total_orders(sample_df) == 4
+
+
+def test_total_orders_counts_each_order_id_once(sample_df):
+    repeated = pd.concat([sample_df, sample_df.iloc[[0]]])
+    assert sales_data.total_orders(repeated) == 4
+
+
+def test_format_currency_uses_dollar_sign_and_separators():
+    assert sales_data.format_currency(116500.21) == "$116,500"
+    assert sales_data.format_currency(1234567) == "$1,234,567"
+    assert sales_data.format_currency(0) == "$0"
+
+
+def test_format_count_uses_separators():
+    assert sales_data.format_count(482) == "482"
+    assert sales_data.format_count(1234567) == "1,234,567"
+
+
+def test_monthly_sales_totals_each_month_oldest_first(sample_df):
+    result = sales_data.monthly_sales(sample_df)
+
+    assert list(result.columns) == ["month", "total_amount"]
+    assert list(result["month"]) == [pd.Timestamp("2024-01-01"), pd.Timestamp("2024-02-01")]
+    assert list(result["total_amount"]) == pytest.approx([120.0, 150.0])
+
+
+def test_sales_by_category_sorted_highest_first(sample_df):
+    result = sales_data.sales_by_category(sample_df)
+
+    assert list(result.columns) == ["category", "total_amount"]
+    assert list(result["category"]) == ["Electronics", "Wearables", "Accessories"]
+    assert list(result["total_amount"]) == pytest.approx([200.0, 50.0, 20.0])
+
+
+def test_sales_by_region_sorted_highest_first(sample_df):
+    result = sales_data.sales_by_region(sample_df)
+
+    assert list(result.columns) == ["region", "total_amount"]
+    assert list(result["region"]) == ["North", "East", "South"]
+    assert list(result["total_amount"]) == pytest.approx([150.0, 100.0, 20.0])
+
+
+def test_real_csv_matches_prd_expected_output():
+    path = Path(__file__).parent.parent / "data" / "sales-data.csv"
+    df = sales_data.load_sales_data(path)
+
+    assert sales_data.total_orders(df) == 482
+    assert sales_data.total_sales(df) == pytest.approx(116500.21, abs=0.01)
+    assert list(sales_data.sales_by_category(df)["category"]) == [
+        "Electronics",
+        "Wearables",
+        "Audio",
+        "Smart Home",
+        "Accessories",
+    ]
+    assert list(sales_data.sales_by_region(df)["region"]) == ["North", "West", "East", "South"]
+    assert len(sales_data.monthly_sales(df)) == 12
